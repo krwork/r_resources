@@ -186,6 +186,8 @@ class ResourcesBuilder implements Builder {
     }
 
     generatedFileContent
+        .writeln('import \'package:margu/config/env_config.dart\';');
+    generatedFileContent
       ..writeln()
       ..writeln('class R {')
       ..writeln(
@@ -211,7 +213,9 @@ class ResourcesBuilder implements Builder {
       ..writeln(svgResourcesClass);
 
     if (options.isStringsGenEnabled) {
-      generatedFileContent..writeln()..writeln(stringResourcesClasses);
+      generatedFileContent
+        ..writeln()
+        ..writeln(stringResourcesClasses);
     }
 
     return generatedFileContent.toString();
