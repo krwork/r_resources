@@ -6,14 +6,13 @@ import 'class_generator.dart';
 
 /// Generator for localized strings class and LocalizationDelegate for it
 class StringsClassGenerator implements ClassGenerator {
-
-  /// Creates StringsClassGenerator from Json content for each locale 
+  /// Creates StringsClassGenerator from Json content for each locale
   /// and locale parameters for LocalizationDelegate
   const StringsClassGenerator({
     required Map<String, Map<String, String>> localizationData,
     required List<String> supportedLocales,
     required String fallbackLocale,
-  })   : _localizationData = localizationData,
+  })  : _localizationData = localizationData,
         _supportedLocales = supportedLocales,
         _fallbackLocale = fallbackLocale;
 
@@ -63,7 +62,7 @@ class StringsClassGenerator implements ClassGenerator {
       ..writeln('  };')
       ..writeln()
       ..writeln('  String _getString(String code) {')
-      ..writeln('    return _localizedValues[locale.toString()]?[code] ??')
+      ..writeln('    return _localizedValues[EnvConfig.locale]?[code] ??')
       ..writeln(
         '        _localizedValues[_fallbackLocale.toString()]?[code] ??',
       )
